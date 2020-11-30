@@ -1,0 +1,491 @@
+﻿@model IEnumerable<SI_Dital.Models.DocumentGroup>
+@{
+    ViewBag.Title = "SI-DITAL | Sistem Informasi Warga Desa Dig";
+    var banner = ViewBag.Banner1 ?? "/assets/images/backgrounds/background-1.jpg";
+}
+<section class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll loaded dzsprx-readyall" data-options='{direction: "reverse", settings_mode_oneelement_max_offset: "150"}'>
+    <div class="divimage dzsparallaxer--target w-100 u-bg-overlay g-bg-img-hero g-bg-black-opacity-0_3--after" style="height: 130%;background-image: url(@banner);"></div>
+    <div class="u-bg-overlay_iiner">
+        <div class="container g-color-white text-center g-flex-centered-item g-position-rel g-bg-cover__inner g-min-height-100vh">
+            <div class="row g-absolute-centered">
+                <img class="g-mb-30--md g-mb-minus-20 mx-auto g-height-auto g-width-250" src="~/assets/images/logo/si-dital-logo-white.png" alt="Logo" />
+
+                <div class="col-md-12">
+                    <h2 class="g-font-weight-700 g-font-size-45 text-uppercase">SI <span class="g-color-green">Dital</span></h2>
+                </div>
+                <div class="col-md-12">
+                    <p class="g-font-size-24">Sistem Informasi Warga Desa Digital</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 g-pos-abs g-bottom-30 g-left-0 g-right-0">
+                    <a class="js-go-to btn u-btn-outline-white g-color-white g-bg-white-opacity-0_1 g-color-black--hover g-bg-white--hover g-font-weight-600 text-uppercase g-rounded-50 g-px-30 g-py-11" href="#" data-target="#promo-section"><i class="fa fa-angle-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="promo-section" class="container g-pt-100">
+    <div class="text-center g-mb-70">
+        <h2 class="h1 g-color-black g-font-weight-600">Servis</h2>
+        <p class="lead">SI-Dital dapat membantu warga desa untuk pengajuan dokumen penting yang lebih mudah dan cepat</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3 g-mb-30">
+            <span class="u-icon-v3 g-color-primary g-bg-primary-opacity-0_1 rounded-circle g-mb-25">
+                <i class="icon-education-089 u-line-icon-pro"></i>
+            </span>
+            <div class="d-inline-block g-width-70 g-height-2 g-bg-primary g-pos-rel g-top-5 g-right-minus-25 g-mr-minus-20"></div>
+            <h2 class="h5 g-color-black g-font-weight-600 mb-3">Mudah</h2>
+            <p>Pengajuan dokumen penting dilakukan secara online oleh warga desa</p>
+        </div>
+
+        <div class="col-md-6 g-mb-30">
+            <img class="img-fluid" src="~/assets/images/logo/si-dital.png" alt="Image Description">
+        </div>
+
+        <div class="col-md-3 mt-auto g-mb-30">
+            <div class="d-inline-block g-width-70 g-height-2 g-bg-brown g-pos-rel g-top-5 g-left-minus-25 g-mr-minus-20"></div>
+            <span class="u-icon-v3 g-color-brown g-bg-brown-opacity-0_1 rounded-circle g-mb-25">
+                <i class="icon-education-088 u-line-icon-pro"></i>
+            </span>
+            <h2 class="h5 g-color-black g-font-weight-600 mb-3">Cepat dan Transparan</h2>
+            <p>Proses persetujuan dokumen dapat dilakukan kapan saja dan di lihat semua pihak</p>
+        </div>
+    </div>
+</section>
+<section id="product-section" class="g-bg-secondary g-py-100">
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col g-py-30 g-pa-30--md">
+                <section class="g-bg-secondary">
+                    <div class="row justify-content-center text-center g-mb-50">
+                        <div class="col-lg-9">
+                            <h1 class="h2 g-color-black g-font-weight-600 mb-2">Galeri</h1>
+                            <div class="d-inline-block g-width-30 g-height-2 g-bg-primary mb-2"></div>
+                            <p class="lead mb-0">Berikut ini produk-produk unggulan dan kreatif yang dikembangkan di desa kami dalam berbagai sektor ekonomi</p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div id="shortcode">
+                            <div class="shortcode-html">
+                                <!-- Cube Portfolio Blocks - Filter -->
+                                <ul id="filterControls" class="d-block list-inline text-center g-mb-50">
+                                    <li class="list-inline-item cbp-filter-item cbp-filter-item-active g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2"
+                                        role="button" data-filter="*">
+                                        All
+                                    </li>
+                                    <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".identity">
+                                        Pertanian
+                                    </li>
+                                    <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".design">
+                                        Perdagangan
+                                    </li>
+                                    <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".graphic">
+                                        UMKM
+                                    </li>
+                                    <li class="list-inline-item cbp-filter-item g-brd-around g-brd-gray-light-v4 g-brd-primary--active g-color-gray-dark-v4 g-color-primary--hover g-color-primary--active g-font-size-12 rounded g-transition-0_3 g-px-20 g-py-7 mb-2" role="button" data-filter=".graphic, .identity">
+                                        Perkebunan
+                                    </li>
+                                </ul>
+                                <!-- End Cube Portfolio Blocks - Filter -->
+                                <!-- Cube Portfolio Blocks - Content -->
+                                <div class="cbp" data-controls="#filterControls" data-animation="quicksand" data-x-gap="30" data-y-gap="30" data-media-queries='[
+                                           {"width": 1500, "cols": 3},
+                                           {"width": 1100, "cols": 3},
+                                           {"width": 800, "cols": 3},
+                                           {"width": 480, "cols": 2},
+                                           {"width": 300, "cols": 1}
+                                         ]'>
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item identity design">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Identity, Design</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item design">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Design</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item graphic identity">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Graphic, Identity</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item graphic">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Graphic</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item identity">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Identity</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item graphic">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Graphic</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item identity design">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Identity, Design</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item design">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Design</p>
+                                        </div>
+                                    </div>
+                                    <!-- End Cube Portfolio Blocks - Item -->
+                                    <!-- Cube Portfolio Blocks - Item -->
+                                    <div class="cbp-item design">
+                                        <div class="u-block-hover g-parent">
+                                            <img class="img-fluid g-transform-scale-1_1--parent-hover g-transition-0_5 g-transition--ease-in-out" src="~/assets/images/logo/si-dital.png" alt="Image description">
+                                            <div class="d-flex w-100 h-100 g-bg-black-opacity-0_1 opacity-0 g-opacity-1--parent-hover g-pos-abs g-top-0 g-left-0 g-transition-0_3 g-transition--ease-in u-block-hover__additional--fade u-block-hover__additional--fade-in g-pa-20">
+                                                <ul class="align-items-end flex-column list-inline mt-auto ml-auto mb-0">
+                                                    <li class="list-inline-item">
+                                                        <a class="cbp-lightbox u-icon-v2 u-icon-size--sm g-brd-white g-color-black g-bg-white rounded-circle" href="~/assets/images/logo/si-dital.png">
+                                                            <i class="icon-communication-017 u-line-icon-pro"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="u-shadow-v19 g-bg-white text-center g-pa-25 mb-1">
+                                            <h3 class="h5 g-color-black g-font-weight-700 mb-1">SI-Dital</h3>
+                                            <p class="mb-0">Design</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Cube Portfolio Blocks - Content -->
+                            </div>
+
+                            <div class="shortcode-styles">
+                                <!-- CSS Implementing Plugins -->
+                                <link type="text/plain" rel="stylesheet" href="~/assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+                            </div>
+
+                            <div class="shortcode-scripts">
+                                <!-- JS Implementing Plugins -->
+                                <script type="text/plain" src="~/assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js">
+                                </script>
+
+                                <!-- JS Unify -->
+                                <script type="text/plain" src="~/assets/js/components/hs.cubeportfolio.js">
+                                </script>
+
+                                <!-- JS Plugins Init. -->
+                                <script type="text/plain">
+                                    $(document).on('ready', function () {
+                                    // initialization of cubeportfolio
+                                    $.HSCore.components.HSCubeportfolio.init('.cbp');
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- End Show Code -->
+
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about-section" class="g-bg-secondary bg-main-body">
+    <div class="container g-pt-100">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 g-mb-30">
+                <div class="mb-2">
+                    <div class="d-inline-block g-width-30 g-height-2 g-pos-rel g-top-minus-4 g-bg-primary mr-2"></div>
+                    <span class="g-color-gray-dark-v3 g-font-weight-600 g-font-size-12 text-uppercase">Tentang</span>
+                </div>
+
+                <div class="mb-5">
+                    <h2 class="h1 g-color-black g-font-weight-600 g-mb-35">
+                        <span class="g-color-primary">Sistem</span> Informasi<br>Warga
+                        <span class="g-color-primary">Desa Digital</span>
+                    </h2>
+                    <p>SI Dital merupakan aplikasi Sistem Informasi Desa untuk membantu warga pedesaan. </p>
+                    <p>Dengan aplikasi ini warga desa dapat mengajukan dokumen penting tanpa harus datang langsung ke kantor desa.</p>
+                </div>
+                <a class="js-go-to btn u-btn-primary btn btn-xl u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-py-12 g-px-30" href="" data-target="#contact-section">AJUKAN DOKUMEN</a>
+            </div>
+
+            <div class="col-lg-6 g-mb-30">
+                <img class="img-fluid mb-4" src="~/assets/images/logo/si-dital.png" alt="Image Description">
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact-section" class="container bg-main-body g-pt-100">
+    <div class="row g-mb-20">
+        <div class="col-lg-6 g-mb-50">
+            <!-- Heading -->
+            <h2 class="h1 g-color-black g-font-weight-600 g-mb-35">
+                <span class="g-color-primary">Lebih</span> Mudah<br>Dalam
+                <span class="g-color-primary">Mengajukan Dokumen</span>
+            </h2>
+            <p class="g-font-size-18 mb-0">Untuk mengajukan dokumen Anda, Silahkan massukan data di bawah ini dengan lengkap</p>
+            <!-- End Heading -->
+        </div>
+        <div class="col-lg-3 align-self-end ml-auto g-mb-50">
+            <div class="media">
+                <div class="d-flex align-self-center">
+                    <span class="u-icon-v2 u-icon-size--sm g-color-white g-bg-primary rounded-circle mr-3">
+                        <i class="g-font-size-16 icon-communication-033 u-line-icon-pro"></i>
+                    </span>
+                </div>
+                <div class="media-body align-self-center">
+                    <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Nomor Telepone</h3>
+                    <p class="mb-0">0856-xxxx-xxxx</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 align-self-end ml-auto g-mb-50">
+            <div class="media">
+                <div class="d-flex align-self-center">
+                    <span class="u-icon-v2 u-icon-size--sm g-color-white g-bg-primary rounded-circle mr-3">
+                        <i class="g-font-size-16 icon-communication-062 u-line-icon-pro"></i>
+                    </span>
+                </div>
+                <div class="media-body align-self-center">
+                    <h3 class="h6 g-color-black g-font-weight-700 text-uppercase mb-0">Alamat Email</h3>
+                    <p class="mb-0">si-dital@support.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("SendRequestDocument", "Home", FormMethod.Post, new { id = "SendRequestDocument", enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="row justify-content-center">
+    <div class="col-md-9">
+        <div class="g-mb-40">
+            <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Deskripsi Tujuan</label>
+            <textarea class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" id="Description" name="Description" rows="12" placeholder="Massukan Deskripsi Tujuan Pengajuan Dokumen Dengan Lengkap..."></textarea>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Jenis Dokumen</label>
+        <div class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15">
+            @foreach (var option in Model)
+            {
+                <div class="form-check">
+                    <div class="custom-controls-stacked mb-0">
+                        <label class="custom-control custom-radio g-mb-5">
+                            <input type="radio" class="custom-control-input" name="DocumentType" id="@option.Permalink" value="@option.Permalink">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description"> @option.Title</span>
+                        </label>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="text-right">
+            <button class="btn u-btn-primary btn btn-xl u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-py-12 g-px-30" type="submit" role="button">Kirim Pengajuan</button>
+        </div>
+    </div>
+</div>
+    }
+</section>
+<a class="js-go-to u-go-to-v2" href="#"
+   data-type="fixed"
+   data-position='{
+           "bottom": 15,
+           "right": 15
+         }'
+   data-offset-top="400"
+   data-compensation="#js-header"
+   data-show-effect="zoomIn">
+    <i class="hs-icon hs-icon-arrow-top"></i>
+</a>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SendRequestDocument").submit(function (e) {
+                e.preventDefault();
+                var form = $(this);
+                var url = form.attr('action');
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: form.serialize(),
+                    success: function (data) {
+                        if (data == "OK") {
+                            swal({
+                                title: "Sukses",
+                                text: "Anda Berhasil Mengirim Pesan",
+                                type: "success",
+                                button: true,
+                            });
+                            $('#SendRequestDocument').trigger("reset");
+                        } else if (data = "NULL") {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Data Tidak Boleh Kosong!",
+                                imageUrl: '/assets/images/logo/si-dital-logo.png',
+                                imageWidth: 500,
+                                imageHeight: 500,
+                                confirmButtonColor: '#72C02C',
+                                imageAlt: 'Custom image',
+                                button: true,
+                            });
+                            $('#SendRequestDocument').trigger("reset");
+                        } else if (data = "NOTLOGIN") {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Silahkan Login Terlebih Dahulu!",
+                                imageUrl: '/assets/images/logo/si-dital-logo.png',
+                                imageWidth: 500,
+                                imageHeight: 500,
+                                confirmButtonColor: '#72C02C',
+                                imageAlt: 'Custom image',
+                                button: true,
+                            });
+                            $('#SendRequestDocument').trigger("reset");
+                        }
+                        else {
+                            swal({
+                                title: 'Terjadi Kesalahan',
+                                text: 'Anda Gagal Mengirim Pesan!',
+                                imageUrl: '/assets/images/logo/si-dital-logo.png',
+                                imageWidth: 500,
+                                imageHeight: 500,
+                                confirmButtonColor: '#72C02C',
+                                imageAlt: 'Custom image',
+                            });
+                            $('#SendRequestDocument').trigger("reset");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

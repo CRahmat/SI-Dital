@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="SI_Dital.Models.Admin">
+    <Position X="53.75" Y="13" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAACAAAAAAAAAAAACAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.ApplicationUser">
+    <Position X="50" Y="7.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAgANAAUAQAAACAAAAAAAACQAAEAABAEAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.Citizens">
+    <Position X="46.75" Y="12.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAACAAAAAAAAAAAACAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.Document">
+    <Position X="38" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAkEAAAwAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Document.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.DocumentGroup">
+    <Position X="41.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Document.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.Hamlet">
+    <Position X="43.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAEAAAAAAAAAEAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Hamlet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.Job">
+    <Position X="46" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.RT">
+    <Position X="33.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAgEAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.RW">
+    <Position X="35.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAEQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.VillageHead">
+    <Position X="50.25" Y="12.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAAAAGAAAAAAAAAAAACAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Models.Metadata">
+    <Position X="39.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AFAAEAAAAAAAAAAACAAAEAAAAAAAAAQAQAAAAQAAAAE=</HashCode>
+      <FileName>Models\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddCitizen">
+    <Position X="24.5" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAgAICIAAQAQACAAAACAAACAAAEAgAAMAI=</HashCode>
+      <FileName>ViewModels\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditCitizen">
+    <Position X="28" Y="8.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAgAICIAAQAQACAAAACAAACAAAEAgAAMAI=</HashCode>
+      <FileName>ViewModels\Citizens.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddDocumentType">
+    <Position X="17" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DocumentTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditDocumentType">
+    <Position X="19.75" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAEAAAAAAAAAAAAAAAAAQBAAAAAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>ViewModels\DocumentTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.DetailsDocumentType">
+    <Position X="23.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\DocumentTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddHamlet">
+    <Position X="26" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Hamlet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditHamlet">
+    <Position X="30.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAEAEAAAAAAAAAEAAAAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Hamlet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.DetailsHamlet">
+    <Position X="28.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Hamlet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddJobs">
+    <Position X="48.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Jobs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditJobs">
+    <Position X="50.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAEAAAAQEAAAAAAAAAAAAAAAAAAQAAAAQAAAAA=</HashCode>
+      <FileName>ViewModels\Jobs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.DetailsJob">
+    <Position X="53.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\Jobs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddRT">
+    <Position X="55.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditRT">
+    <Position X="58" Y="4.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAEAAAAAAAAAAgEAAAAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.DetailsRT">
+    <Position X="61" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.AddRW">
+    <Position X="17" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.EditRW">
+    <Position X="21.5" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAEAAAAAAAAAAAEQAAAAQAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.ViewModels.DetailsRW">
+    <Position X="19.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RW.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Controllers.CitizenController">
+    <Position X="27.25" Y="24" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CitizenController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Controllers.HomeController">
+    <Position X="43.25" Y="27.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Controllers.RegisterController">
+    <Position X="39.75" Y="27.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Controllers\RegisterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Controllers.AdministratorController">
+    <Position X="35" Y="27.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>QAAJBkAADABAEAAQAAgAAASBQIgCAQAEIBgAqAAAHjA=</HashCode>
+      <FileName>Controllers\AdministratorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SI_Dital.Controllers.AccountController">
+    <Position X="30.75" Y="24" Width="3.5" />
+    <NestedTypes>
+      <Class Name="SI_Dital.Controllers.AccountController.ChallengeResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAAAAFgEgAABAABMKIAAAMRAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object">
+    <Position X="31.25" Y="1.25" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Web.Mvc.Controller">
+    <Position X="34.75" Y="11.5" Width="4.5" />
+    <TypeIdentifier />
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="Events.Controllers.BaseController">
+    <Position X="40" Y="24" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAACAQAAAAAABgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BaseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

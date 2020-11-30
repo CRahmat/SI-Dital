@@ -1,0 +1,37 @@
+﻿<ul id="sidebarnav">
+    <li class="nav-small-cap">Menu Anda</li>
+    <li>
+        <a href="@Url.Action("Dashboard", "Administrator")"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("Citizen", "Administrator")"><i class="mdi mdi-loupe"></i><span class="hide-menu">Penduduk</span></a>
+    </li>
+    <li>
+        <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-calendar"></i><span class="hide-menu">Kelola Data</span></a>
+        <ul aria-expanded="false" class="collapse">
+            <li><a href="@Url.Action("DocumentType", "Administrator")">Daftar Jenis Dokumen</a></li>
+            <li><a href="@Url.Action("Hamlet", "Administrator")">Daftar Pedukuhan</a></li>
+            <li><a href="@Url.Action("Job", "Administrator")">Daftar Pekerjaan</a></li>
+            <li><a href="@Url.Action("RT", "Administrator")">Daftar RT</a></li>
+            <li><a href="@Url.Action("RW", "Administrator")">Daftar RW</a></li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="@Url.Action("DocumentSubmissionList", "Administrator")"><i class="mdi mdi-file-document"></i><span class="hide-menu">Pengajuan Dokumen</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("DocumentSubmissionHistory", "Administrator")"><i class="mdi mdi-history"></i><span class="hide-menu">Riwayat</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("Report", "Administrator")"><i class="mdi mdi-clipboard-text"></i><span class="hide-menu">Laporan</span></a>
+    </li>
+    <li class="mb-10"></li>
+    <li class="mb-10"></li>
+
+    <li class="mb-10"></li>
+</ul>
+
+
+

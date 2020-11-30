@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "RegisterCitizens";
+}
+<section class="g-bg-gray-light-v5 g-py-100 g-py-120--md">
+    <div class="container text-center g-width-780 g-mb-65">
+        <div class="u-heading-v2-2--bottom g-brd-primary g-mb-30">
+            <h2 class="text-uppercase u-heading-v2__title g-line-height-1 g-font-weight-700 g-font-size-30 g-font-size-40--md g-mb-0">Formulir Pendaftaran<span class="g-color-primary"> LEMBAGA PENDIDIKAN</span></h2>
+        </div>
+        <p class="mb-0">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"</p>
+    </div>
+    <div class="container g-font-size-12">
+        <div id="shortcode6">
+            <div class="shortcode-html">
+                <div class="row">
+                    <div class="container g-font-size-12">
+                        <div id="shortcode6">
+                            <div class="shortcode-html">
+                                <div class="row">
+                                    @*<div class="container">
+                                        @using (Html.BeginForm("RegisterIndustry", "Register", FormMethod.Post, new { id = "RegistrationIndustry", enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="row">
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Nama Lembaga<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Nama Lembaga..." } })
+                                                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Email<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Email Anda..." } })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Password<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Ketikan Password..." } })
+                                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Konfirmasi Password<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Konfirmasi Password..." } })
+                                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Tanggal Berdiri<span class="g-color-red">*</span></label>
+                                                        <div class="input-group date" id="Since" data-target-input="nearest">
+                                                            <input type="text" placeholder="dd/mm/yyyy" data-target="#Since" data-toggle="datetimepicker" data-mask="99/99/9999" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in datetimepicker-input" name="DOB" required="required" data-val="true" data-val-required="Tanggal berdiri wajib diisi">
+                                                            <div class="input-group-addon btn-primary" data-target="#Since" data-toggle="datetimepicker"><i class="fa fa-calendar"></i></div>
+                                                        </div>
+                                                        @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Nomor Telepon<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.ContactPersonPhoneNumber, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Nomor Telepon Contact Person..." } })
+                                                        @Html.ValidationMessageFor(model => @model.ContactPersonPhoneNumber, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Alamat<span class="g-color-red">*</span></label>
+                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in", placeholder = "Alamat ..." } })
+                                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Provinsi<span class="g-color-red">*</span></label>
+                                                        @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Province, "Pilih Provinsi", new
+                                                            {
+                                                                @class = "d-block w-100 custom-select u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in",
+                                                                id = "Province",
+                                                                style = "width:100%",
+                                                                required = "required"
+                                                            })
+                                                        @Html.ValidationMessageFor(model => @model.Province, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Kota/Kabupaten<span class="g-color-red">*</span></label>
+                                                        <select id="City" name="City" class="d-block w-100 custom-select u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" required="required" data-val="true" data-val-required="Wajib memilih Kota/Kabupaten">
+                                                            <option hidden value="">Pilih Kota/Kabupaten</option>
+                                                        </select>
+                                                        @Html.ValidationMessageFor(model => @model.City, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Upload legalitas Usaha / Industri</label>
+
+                                                        <input class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="file" name="LegalDocument">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Link Website</label>
+                                                        <input class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="WebsiteUrl" placeholder="Link Website...">
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12 g-mb-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label g-font-size-16 g-color-gray-dark-v2">Upload katalog / Company Profile</label>
+
+                                                        <input class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="file" name="CompanyProfile">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="text-center g-pt-15">
+                                                <button class="btn u-btn-primary btn-lg text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar Sekarang</button>
+                                            </div>
+
+                                        }
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="loading" class="preloader">
+    <div class="loader"></div>
+
+</div>
+
