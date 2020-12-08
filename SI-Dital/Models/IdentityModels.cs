@@ -50,5 +50,6 @@ namespace SI_Dital.Models
         public DbSet<DocumentGroup> DocumentTypes { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Document> Documents { get; set; }
+        public DbSet<FileDocuments> FileDocuments { get; set; }
     }
 }

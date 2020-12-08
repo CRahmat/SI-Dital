@@ -101,7 +101,6 @@ C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.Owin.Security
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csprojAssemblyReference.cache
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csproj.CoreCompileInputs.cache
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csproj.CopyComplete
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.dll
@@ -109,3 +108,11 @@ C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.pdb
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SI_Dital_1.resources
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csproj.GenerateResource.cache
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SI_Dital_3.resources
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\MessagingToolkit.QRCode.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.Azure.KeyVault.Core.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.WindowsAzure.Storage.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.Azure.KeyVault.Core.xml
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.WindowsAzure.Storage.pdb
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SIDital4.resources
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SI_Dital5.resources

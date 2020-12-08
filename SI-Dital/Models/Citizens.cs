@@ -14,6 +14,7 @@ namespace SI_Dital.Models
         public Job Job {set; get;}
         public bool Gender { set; get; }
         public bool Status { set; get; }
+        public DateTimeOffset DOB { get; set; }
         public virtual ICollection<Document> Documents { get; set; }
 
     }
@@ -45,10 +46,13 @@ namespace SI_Dital.Models
         public DateTimeOffset Updated { get; set; }
         public DateTimeOffset Deleted { get; set; }
         public DateTimeOffset Published { get; set; }
+        public DateTimeOffset Approved { get; set; }
+        public Status Status { get; set; }
         public virtual ApplicationUser CreatedBy { get; set; }
         public virtual ApplicationUser UpdatedBy { get; set; }
         public virtual ApplicationUser DeletedBy { get; set; }
         public virtual ApplicationUser PublishedBy { get; set; }
+        public virtual ApplicationUser ApprovedBy { get; set; }
 
         public Metadata()
         {

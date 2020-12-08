@@ -1,4 +1,6 @@
-﻿using Events.Controllers;
+﻿using SI_Dital.Helpers;
+using SI_Dital.Controllers;
+using SI_Dital.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -729,6 +731,14 @@ namespace SI_Dital.Controllers
         }
         public async Task<ActionResult> AddCitizen()
         {
+            var job = await db.Jobs.Where(x => x.IsDeleted == false)
+                .Select(i => new SelectListItem()
+                {
+                    Text = i.Title,
+                    Value = i.IdJob.ToString(),
+                    Selected = false
+                }).ToArrayAsync();
+            ViewBag.Jobs = job;
             return View();
         }
         [HttpPost]
@@ -908,6 +918,53 @@ namespace SI_Dital.Controllers
         }
         public async Task<ActionResult> Report()
         {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult AddFileDocument()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddFileDocument(ViewModels.FileDocuments model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var currentUser = await db.Users.Where(x => x.UserName == User.Identity.Name)
+                        .SingleOrDefaultAsync();
+                    var currentTime = DateTimeOffset.UtcNow;
+
+                    var document = new FileDocuments()
+                    {
+                        IdFileDocument = Guid.NewGuid().ToString(),
+                        Name = model.Name,
+                        FileUrl = await Helpers.UploadFileHelper.UploadDocumentsAsync(model.File, currentUser.Id),
+                        NameXPosition = model.NameXPosition,
+                        NameYPosition = model.NameYPosition,
+                        QRXPosition = model.QRXPosition,
+                        QRYPosition = model.QRYPosition,
+                        FontSize = model.FontSize,
+                        Status = model.Status,
+                        Created = currentTime,
+                        Updated = currentTime,
+                        CreatedBy = currentUser,
+                        UpdatedBy = currentUser
+                    };
+
+                    db.FileDocuments.Add(document);
+                    var result = await db.SaveChangesAsync();
+                    if (result > 0)
+                        return RedirectToAction("FileDocuments");
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError(ex.Message);
+                    Trace.TraceError(ex.StackTrace);
+                    throw new HttpException(500, "Error on Processing Administrators Add FileDocument");
+                }
+            }
             return View();
         }
     }

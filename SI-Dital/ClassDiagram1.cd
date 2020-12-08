@@ -73,7 +73,7 @@
   <Class Name="SI_Dital.Models.Metadata">
     <Position X="39.5" Y="4.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AFAAEAAAAAAAAAAACAAAEAAAAAAAAAQAQAAAAQAAAAE=</HashCode>
+      <HashCode>AFAAEAEGAAAAAAAACAAAEAAAAAAAAAQAQAAAAQAAAAE=</HashCode>
       <FileName>Models\Citizens.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -220,7 +220,7 @@
   <Class Name="SI_Dital.Controllers.AdministratorController">
     <Position X="35" Y="27.25" Width="4" />
     <TypeIdentifier>
-      <HashCode>QAAJBkAADABAEAAQAAgAAASBQIgCAQAEIBgAqAAAHjA=</HashCode>
+      <HashCode>QAAZBkAADABAEAAQAAgAAASBQIgCAQAEIBgAqAAAHjA=</HashCode>
       <FileName>Controllers\AdministratorController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -247,7 +247,7 @@
     <TypeIdentifier />
     <Lollipop Orientation="Right" Position="0.1" />
   </Class>
-  <Class Name="Events.Controllers.BaseController">
+  <Class Name="SI_Dital.Controllers.BaseController">
     <Position X="40" Y="24" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAABACAACAQAAAAAABgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

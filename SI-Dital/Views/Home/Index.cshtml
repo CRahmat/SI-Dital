@@ -27,7 +27,7 @@
 </section>
 <section id="promo-section" class="container g-pt-100">
     <div class="text-center g-mb-70">
-        <h2 class="h1 g-color-black g-font-weight-600">Servis</h2>
+        <h2 class="h1 g-color-black g-font-weight-600">Layanan</h2>
         <p class="lead">SI-Dital dapat membantu warga desa untuk pengajuan dokumen penting yang lebih mudah dan cepat</p>
     </div>
 
@@ -381,36 +381,36 @@
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<div class="row justify-content-center">
-    <div class="col-md-9">
-        <div class="g-mb-40">
-            <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Deskripsi Tujuan</label>
-            <textarea class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" id="Description" name="Description" rows="12" placeholder="Massukan Deskripsi Tujuan Pengajuan Dokumen Dengan Lengkap..."></textarea>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Jenis Dokumen</label>
-        <div class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15">
-            @foreach (var option in Model)
-            {
-                <div class="form-check">
-                    <div class="custom-controls-stacked mb-0">
-                        <label class="custom-control custom-radio g-mb-5">
-                            <input type="radio" class="custom-control-input" name="DocumentType" id="@option.Permalink" value="@option.Permalink">
-                            <span class="custom-control-indicator"></span>
-                            <span class="custom-control-description"> @option.Title</span>
-                        </label>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="g-mb-40">
+                    <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Deskripsi Tujuan</label>
+                    <textarea class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15" id="Description" name="Description" rows="12" placeholder="Massukan Deskripsi Tujuan Pengajuan Dokumen Dengan Lengkap..."></textarea>
                 </div>
-            }
+            </div>
+            <div class="col-md-3">
+                <label class="g-color-gray-dark-v2 g-font-size-16 g-ml-5">Jenis Dokumen</label>
+                <div class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-brd-primary--focus g-resize-none rounded-3 g-py-13 g-px-15">
+                    @foreach (var option in Model)
+                    {
+                        <div class="form-check">
+                            <div class="custom-controls-stacked mb-0">
+                                <label class="custom-control custom-radio g-mb-5">
+                                    <input type="radio" class="custom-control-input" name="DocumentType" id="@option.Permalink" value="@option.Permalink">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description"> @option.Title</span>
+                                </label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="text-right">
+                    <button class="btn u-btn-primary btn btn-xl u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-py-12 g-px-30" type="submit" role="button">Kirim Pengajuan</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-12">
-        <div class="text-right">
-            <button class="btn u-btn-primary btn btn-xl u-btn-hover-v1-4 g-letter-spacing-0_5 text-uppercase g-rounded-50 g-py-12 g-px-30" type="submit" role="button">Kirim Pengajuan</button>
-        </div>
-    </div>
-</div>
     }
 </section>
 <a class="js-go-to u-go-to-v2" href="#"
@@ -427,6 +427,8 @@
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/js/manage/main.js"></script>
     <script>
         $(document).ready(function () {
             $("#SendRequestDocument").submit(function (e) {

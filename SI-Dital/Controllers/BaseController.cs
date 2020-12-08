@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Events.Controllers
+namespace SI_Dital.Controllers
 {
     public class BaseController : Controller
     {
