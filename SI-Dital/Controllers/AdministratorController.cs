@@ -608,7 +608,7 @@ namespace SI_Dital.Controllers
                         IdJob = newJob.IdJob,
                         Title = newJob.Title,
                         Status = newJob.Status,
-                        IsDeleted = true,
+                        IsDeleted = false,
                         CreatedBy = currentUser,
                         Created = DateTimeOffset.UtcNow
                     };
@@ -739,13 +739,27 @@ namespace SI_Dital.Controllers
                     Selected = false
                 }).ToArrayAsync();
             ViewBag.Jobs = job;
+            var rt = await db.RT.Where(x => x.IsDeleted == false)
+                .Select(i => new SelectListItem()
+                {
+                    Text = i.Name,
+                    Value = i.IdRT.ToString(),
+                    Selected = false
+                }).ToArrayAsync();
+            ViewBag.RT = rt;
+            var rw = await db.RW.Where(x => x.IsDeleted == false)
+                .Select(i => new SelectListItem()
+                {
+                    Text = i.Name,
+                    Value = i.IdRW.ToString(),
+                    Selected = false
+                }).ToArrayAsync();
+            ViewBag.RW = rw;
             return View();
         }
         [HttpPost]
         public async Task<ActionResult> AddCitizen(ViewModels.AddCitizen newCitizen)
         {
-            if (ModelState.IsValid)
-            {
                 var currentUser = await db.Users.Where(x => x.UserName == User.Identity.Name)
                     .SingleOrDefaultAsync();
                 if (currentUser != null)
@@ -753,25 +767,51 @@ namespace SI_Dital.Controllers
                     var addCitizen = new Models.Citizens
                     {
                         NIK = newCitizen.NIK,
-                        Title = newCitizen.FullName,
+                        Email = newCitizen.Email,
+                        FullName = newCitizen.FullName,
                         RegistrationStatus = newCitizen.RegistrationStatus,
                         IsBanned = true,
                         Avatar = newCitizen.Avatar,
                         Address = newCitizen.Address,
                         RT = newCitizen.RT,
                         RW = newCitizen.RW,
+                        DOB = newCitizen.DOB,
+                        Institution = newCitizen.Institution,
+                        PhoneNumber = newCitizen.PhoneNumber,
+                        MaritalStatus = newCitizen.MaritalStatus,
+                        Religion = newCitizen.Religion,
+                        Citizenship = newCitizen.Citizenship,
                         Descriptions = newCitizen.Descriptions,
                         Job = newCitizen.Job,
-                        Gender = newCitizen.Gender
+                        Gender = newCitizen.Gender,
+                        Password = newCitizen.Password,
+                        Roles = newCitizen.Roles,
+                        RegisteredBy = currentUser,
+                        Registered = DateTime.UtcNow
                     };
                     try
                     {
-                        db.Citizens.Add(addCitizen);
-                        var result = await db.SaveChangesAsync();
-                        if (result > 0)
+                        var user = new ApplicationUser { UserName = newCitizen.NIK, Email = newCitizen.Email };
+                        var resultUserManager = await UserManager.CreateAsync(user, newCitizen.Password);
+                        var currentHost = await UserManager.FindByEmailAsync(newCitizen.Email);
+                        var addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "Citizen");
+                        if (newCitizen.Roles == Roles.Admin)
                         {
-                            return RedirectToAction("Citizen");
+                            addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "Administrator");
+                        }
+                        else if (newCitizen.Roles == Roles.VillageHead)
+                        {
+                            addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "VillageHead");
+                        }
+                        if (resultUserManager.Succeeded && addToRoleResult.Succeeded)
+                        {
+                            db.Citizens.Add(addCitizen);
+                            var result = await db.SaveChangesAsync();
+                            if (result > 0)
+                            {
+                                return RedirectToAction("Citizen");
 
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -780,7 +820,6 @@ namespace SI_Dital.Controllers
                         Trace.TraceError(ex.StackTrace);
                     }
                 }
-            }
             return View("Error");
         }
         public async Task<ActionResult> EditCitizen(string id)
@@ -804,16 +843,26 @@ namespace SI_Dital.Controllers
                     var editCitizen = new Models.Citizens
                     {
                         NIK = updateCitizen.NIK,
-                        Title = updateCitizen.FullName,
+                        FullName = updateCitizen.FullName,
                         RegistrationStatus = updateCitizen.RegistrationStatus,
                         IsBanned = true,
                         Avatar = updateCitizen.Avatar,
                         Address = updateCitizen.Address,
                         RT = updateCitizen.RT,
                         RW = updateCitizen.RW,
+                        DOB = updateCitizen.DOB,
+                        Institution = updateCitizen.Institution,
+                        PhoneNumber = updateCitizen.PhoneNumber,
+                        MaritalStatus = updateCitizen.MaritalStatus,
+                        Religion = updateCitizen.Religion,
+                        Citizenship = updateCitizen.Citizenship,
                         Descriptions = updateCitizen.Descriptions,
                         Job = updateCitizen.Job,
-                        Gender = updateCitizen.Gender
+                        Gender = updateCitizen.Gender,
+                        Password = updateCitizen.Password,
+                        Roles = updateCitizen.Roles,
+                        EditedBy = currentUser,
+                        Edited = DateTime.UtcNow
                     };
                     try
                     {

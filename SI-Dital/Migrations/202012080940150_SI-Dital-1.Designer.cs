@@ -7,13 +7,13 @@ namespace SI_Dital.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class SIDital4 : IMigrationMetadata
+    public sealed partial class SIDital1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SIDital4));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SIDital1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011302311125_SI-Dital-4"; }
+            get { return "202012080940150_SI-Dital-1"; }
         }
         
         string IMigrationMetadata.Source

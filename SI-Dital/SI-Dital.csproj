@@ -187,21 +187,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UploadFileHelper.cs" />
-    <Compile Include="Migrations\202011231827470_SI_Dital_1.cs" />
-    <Compile Include="Migrations\202011231827470_SI_Dital_1.Designer.cs">
-      <DependentUpon>202011231827470_SI_Dital_1.cs</DependentUpon>
+    <Compile Include="Migrations\202012080940150_SI-Dital-1.cs" />
+    <Compile Include="Migrations\202012080940150_SI-Dital-1.Designer.cs">
+      <DependentUpon>202012080940150_SI-Dital-1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011300511260_SI_Dital_3.cs" />
-    <Compile Include="Migrations\202011300511260_SI_Dital_3.Designer.cs">
-      <DependentUpon>202011300511260_SI_Dital_3.cs</DependentUpon>
+    <Compile Include="Migrations\202012081050386_SI-Dital-2.cs" />
+    <Compile Include="Migrations\202012081050386_SI-Dital-2.Designer.cs">
+      <DependentUpon>202012081050386_SI-Dital-2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011302311125_SI-Dital-4.cs" />
-    <Compile Include="Migrations\202011302311125_SI-Dital-4.Designer.cs">
-      <DependentUpon>202011302311125_SI-Dital-4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202012011220445_SI_Dital-5.cs" />
-    <Compile Include="Migrations\202012011220445_SI_Dital-5.Designer.cs">
-      <DependentUpon>202012011220445_SI_Dital-5.cs</DependentUpon>
+    <Compile Include="Migrations\202012081348215_SI-Dital-3.cs" />
+    <Compile Include="Migrations\202012081348215_SI-Dital-3.Designer.cs">
+      <DependentUpon>202012081348215_SI-Dital-3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -9571,17 +9567,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011231827470_SI_Dital_1.resx">
-      <DependentUpon>202011231827470_SI_Dital_1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012080940150_SI-Dital-1.resx">
+      <DependentUpon>202012080940150_SI-Dital-1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011300511260_SI_Dital_3.resx">
-      <DependentUpon>202011300511260_SI_Dital_3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012081050386_SI-Dital-2.resx">
+      <DependentUpon>202012081050386_SI-Dital-2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011302311125_SI-Dital-4.resx">
-      <DependentUpon>202011302311125_SI-Dital-4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012011220445_SI_Dital-5.resx">
-      <DependentUpon>202012011220445_SI_Dital-5.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012081348215_SI-Dital-3.resx">
+      <DependentUpon>202012081348215_SI-Dital-3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

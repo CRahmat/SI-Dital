@@ -11,17 +11,10 @@ namespace SI_Dital.Models
     public class ApplicationUser : IdentityUser
     {
         public string FullName { get; set; }
-        public string Institution { get; set; }
-        public string Title { get; set; }
-        public string Avatar { get; set; }
-        public string Address { get; set; }
-        public RT RT { set; get; }
-        public RW RW { set; get; }
         public DateTimeOffset Registered { get; set; }
         public DateTimeOffset Updated { get; set; }
         public bool IsBanned { get; set; }
         public RegistrationStatus RegistrationStatus { get; set; }
-        public ApplicationUser InvitedBy { get; set; }
         public string Descriptions { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

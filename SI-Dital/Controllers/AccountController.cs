@@ -72,23 +72,41 @@ namespace SI_Dital.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Email atau Password salah, silahkan coba lagi.");
             }
+            else
+            {
+                var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: true);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        if (SignInManager.UserManager.IsInRole(user.Id, "VillageHead"))
+                        {
+                            return RedirectToAction("Dashboard", "VillageHead");
+                        }
+                        if (SignInManager.UserManager.IsInRole(user.Id, "Administrator"))
+                        {
+                            return RedirectToAction("Dashboard", "Administrator");
+                        }
+                        else
+                        {
+                            return Redirect("/");
+                        }
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Email atau Password salah, silahkan coba lagi.");
+                        return View(model);
+                }
+            }
+            return View();
+
         }
 
         //

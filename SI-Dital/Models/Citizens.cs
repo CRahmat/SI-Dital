@@ -11,33 +11,26 @@ namespace SI_Dital.Models
     public class Citizens : ApplicationUser
     {
         public string NIK { set; get; }
+        public string Password { get; set; }
         public Job Job {set; get;}
         public bool Gender { set; get; }
         public bool Status { set; get; }
+        public bool MaritalStatus { set; get; }
+        public string Citizenship { set; get; }
+        public Religion Religion { set; get; }
         public DateTimeOffset DOB { get; set; }
+        public RT RT { set; get; }
+        public RW RW { set; get; }
+        public string Institution { get; set; }
+        public string Avatar { get; set; }
+        public string Address { get; set; }
         public virtual ICollection<Document> Documents { get; set; }
+        public Roles Roles { set; get; }
+        public virtual ApplicationUser RegisteredBy { set; get; }
+        public DateTimeOffset Registered { get; set; }
+        public virtual ApplicationUser EditedBy { set; get; }
+        public DateTimeOffset Edited { get; set; }
 
-    }
-    [Table("Admin")]
-    public class Admin : ApplicationUser
-    {
-        public string NIK { set; get; }
-        public Job Job { set; get; }
-        public bool Gender { set; get; }
-        public bool Status { set; get; }
-        public virtual ICollection<Document> Documents { get; set; }
-
-    }
-    [Table("VillageHead")]
-    public class VillageHead : ApplicationUser
-    {
-        public string NIK { set; get; }
-        public Job Job { set; get; }
-        public bool Gender { set; get; }
-        public bool Status { set; get; }
-        public DateTimeOffset Starred { get; set; }
-        public DateTimeOffset Ended { get; set; }
-        public virtual ICollection<Document> Documents { get; set; }
     }
     public class Metadata
     {
@@ -81,5 +74,20 @@ namespace SI_Dital.Models
         Rejected,
         Approved,
         Pending
+    }
+    public enum Roles
+    {
+        VillageHead,
+        Admin,
+        Citizen
+    }
+    public enum Religion
+    {
+        Islam,
+        Kristen,
+        Katolik,
+        Hindu,
+        Budha,
+        KongHuCu
     }
 }

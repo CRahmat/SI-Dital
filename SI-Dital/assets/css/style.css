@@ -38,7 +38,7 @@ Global Styles
 
 body {
     background: #fff;
-    font-family: "Century Gothic",Open Sans, Helvetica, Arial, sans-serif;
+    font-family: "Century Gothic", Helvetica, Arial, sans-serif;
     margin: 0;
     overflow-x: hidden;
     color: #54667a;
@@ -2806,7 +2806,7 @@ Form Material page
     padding: 10px 10px 10px 0;
     display: block;
     border: none;
-    font-family: "Century Gothic",Open Sans, Helvetica, Arial, sans-serif;
+    font-family: "Century Gothic", Helvetica, Arial, sans-serif;
     border-radius: 0px;
     border-bottom: 1px solid #d9d9d9;
 }
@@ -4030,7 +4030,7 @@ Horizontal Timeline page
     border: 1px solid rgba(120, 130, 140, 0.13);
     padding: 8px 16px;
     height: auto;
-    font-family: "Century Gothic",Open Sans, Helvetica, Arial, sans-serif;
+    font-family: "Century Gothic", Helvetica, Arial, sans-serif;
     font-weight: 400;
     border-radius: 0;
 }
