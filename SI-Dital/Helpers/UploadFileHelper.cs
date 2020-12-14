@@ -158,7 +158,7 @@ namespace SI_Dital.Helpers
             string fName = ValidateFileName(fileToUpload.FileName);
             try
             {
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageConnection"].ConnectionString);
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
 
                 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
                 CloudBlobContainer container = blobClient.GetContainerReference("files");

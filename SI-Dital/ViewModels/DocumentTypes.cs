@@ -20,6 +20,8 @@ namespace SI_Dital.ViewModels
         public string IdDocumentType { get; set; }
         [Display(Name = "Nama Dokumen")]
         public string Name { get; set; }
+        [Display(Name = "Nama Dokumen")]
+        public string FileDocument { get; set; }
         [Display(Name = "No Urut")]
         public int Order { get; set; }
 

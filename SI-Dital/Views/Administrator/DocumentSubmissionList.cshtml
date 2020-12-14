@@ -25,7 +25,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>No. Telepon</th>
-                        <th>Jenis Dokumen</th>
+                        <th>Status Dokumen</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@
                                     <td><span class="label label-danger">Di Tolak</span></td>
                                 }
                                 <td>
-                                    <a href="@Url.Action("ProgramParticipant", new { id = @item.IdDocument })" target="_blank" data-toggle="tooltip" data-original-title="Lihat Detail">
+                                    <a href="@Url.Action("DetailSubmission", new { id = @item.IdDocument })" target="_blank" data-toggle="tooltip" data-original-title="Lihat Detail">
                                         <i class="fa fa-user"></i>
                                     </a>
                                 </td>

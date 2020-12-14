@@ -1,0 +1,37 @@
+﻿<ul id="sidebarnav">
+    <li class="nav-small-cap">Menu Anda</li>
+    <li>
+        <a href="@Url.Action("Dashboard", "VillageHead")"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("Citizen", "VillageHead")"><i class="mdi mdi-loupe"></i><span class="hide-menu">Penduduk</span></a>
+    </li>
+    <li>
+        <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-calendar"></i><span class="hide-menu">Kelola Data</span></a>
+        <ul aria-expanded="false" class="collapse">
+            <li><a href="@Url.Action("DocumentType", "VillageHead")">Daftar Jenis Dokumen</a></li>
+            <li><a href="@Url.Action("Hamlet", "VillageHead")">Daftar Pedukuhan</a></li>
+            <li><a href="@Url.Action("Job", "VillageHead")">Daftar Pekerjaan</a></li>
+            <li><a href="@Url.Action("RT", "VillageHead")">Daftar RT</a></li>
+            <li><a href="@Url.Action("RW", "VillageHead")">Daftar RW</a></li>
+
+        </ul>
+    </li>
+
+    <li>
+        <a href="@Url.Action("DocumentSubmissionList", "VillageHead")"><i class="mdi mdi-file-document"></i><span class="hide-menu">Pengajuan Dokumen</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("DocumentSubmissionHistory", "VillageHead")"><i class="mdi mdi-history"></i><span class="hide-menu">Riwayat</span></a>
+    </li>
+    <li>
+        <a href="@Url.Action("Report", "VillageHead")"><i class="mdi mdi-clipboard-text"></i><span class="hide-menu">Laporan</span></a>
+    </li>
+    <li class="mb-10"></li>
+    <li class="mb-10"></li>
+
+    <li class="mb-10"></li>
+</ul>
+
+
+

@@ -1,0 +1,89 @@
+﻿@model SI_Dital.ViewModels.MyDocuments
+
+<div id="#listMyEvent">
+    @if (Model.Documents.Count > 0)
+    {
+        <ul class="row u-timeline-v2-wrap list-unstyled">
+            @foreach (var item in Model.Documents)
+            {
+                <li class="col-md-12 g-brd-bottom g-brd-0--md g-brd-gray-light-v4 g-pb-30 g-pb-0--md g-mb-30 g-mb-0--md">
+                    <div class="row">
+                        <div class="col-md-3 align-self-center text-md-right g-pr-40--md g-mb-20 g-mb-0--md">
+                            <h4 class="g-font-size-16 g-font-weight-600"> @item.DocumentGroup.Title</h4>
+                            <h5 class="g-font-size-12 g-font-weight-300 mb-0">
+                                <span>@item.Created.ToString("dd MMMM yyyy")</span>
+                            </h5>
+                        </div>
+                        <div class="col-md-9 align-self-center g-orientation-left g-pl-40--md">
+                            <div class="g-hidden-sm-down u-timeline-v2__icon g-top-35">
+                                <i class="d-block g-width-18 g-height-18 g-bg-primary g-brd-around g-brd-4 g-brd-gray-light-v4 rounded-circle"></i>
+                            </div>
+                            <article class="g-pa-10--md">
+                                @if (item.Descriptions != null)
+                                {
+                                    <p class="u-link-v5">
+                                        Keterangan Pengajuan
+                                        @if (item.ApprovedBy != null)
+                                        {
+                                        <p>DiVerifikasi Oleh @item.ApprovedBy.FullName Pada @item.Approved.ToString("dd MMMM yyyy")</p>
+                                    }
+                                        <hr />
+                                        <h3 class="g-font-size-16 g-color-primary--hover g-font-weight-600 "> @item.Descriptions</h3>
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p class="u-link-v5">
+                                            <h3 class="g-font-size-16 g-color-primary--hover g-font-weight-600 "> Tidak Terdapat Pengajuan</h3>
+                                        </p>
+                                    }
+                            <p class="mb-0">
+                                @if (item.Status == SI_Dital.Models.Status.Approved)
+                                {
+                                    <a href="@Url.Action("PreviewDocumentToDownload", "Home", new { IdDocument = item.IdDocument, IdCitizen = item.CreatedBy.Id })" class="btn u-btn-primary g-font-size-12 text-center rounded-0 g-mr-10 g-mb-15">Cetak Dokumen</a>
+                                }
+                                else if (item.Status == SI_Dital.Models.Status.Pending)
+                                {
+                                    <a href="@Url.Action("PreviewDocumentToDownload", "Home", new { IdDocument = item.IdDocument, IdCitizen = item.CreatedBy.Id })" class="btn u-btn-primary g-font-size-12 text-center rounded-0 g-mr-10 g-mb-15">Pending</a>
+
+                                }
+                                else if (item.Status == SI_Dital.Models.Status.Rejected)
+                                {
+                                    <a href="@Url.Action("PreviewDocumentToDownload", "Home", new { IdDocument = item.IdDocument , IdCitizen = item.CreatedBy.Id})" class="btn u-btn-primary g-font-size-12 text-center rounded-0 g-mr-10 g-mb-15">Di Tolak</a>
+                                }
+                            </p>
+                            </article>
+                        </div>
+                    </div>
+                    <br />
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <div class="mx-auto text-center" style="margin-top:95px">
+            <span class="d-inline-block u-icon-v3 u-icon-size--xl g-font-size-36 g-bg-primary g-color-white rounded-circle g-mb-10">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </span>
+            <h4 class="h5 g-font-weight-600  g-color-black mb-4 g-color-gray-dark-v3">Kamu Belum Memiliki Pengajuan Dokumen</h4>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-md u-btn-primary g-font-weight-600">AJUKAN DOKUMEN</a>
+        </div>
+    }
+</div>
+
+<link rel="stylesheet" href="~/assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
+
+@*<script src="../../assets/vendor/jquery/jquery.min.js"></script>*@
+<script src="~/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+<script src="~/assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+@*<script src="../../assets/js/hs.core.js"></script>*@
+<script src="~/assets/js/components/hs.scrollbar.js"></script>
+<script>
+    $(document).on('ready', function () {
+        // initialization of HSScrollBar component
+        $.HSCore.components.HSScrollBar.init($('.js-scrollbar'));
+    });
+</script>
+
+

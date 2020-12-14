@@ -1,0 +1,129 @@
+﻿@model SI_Dital.Models.Citizens
+    @{ 
+        var backgroundFooter = ViewBag.BackgroundFooter ?? "/assets/images/backgrounds/background-1.jpg";
+    }
+<!DOCTYPE html>
+<html lang="en">
+<body class="u-bg-overlay g-bg-img-hero g-color-white g-bg-white-opacity-0_8--after text-center text-md-left" style="background-image: url(@backgroundFooter);">
+    <main class="g-py-20">
+        <section class="g-py-100">
+            <div class="container u-bg-overlay__inner">
+
+                <div class="row">
+                    <!-- Profile Sidebar -->
+                    <div class="col-lg g-mb-50 g-mb-0--lg">
+                        <!-- User Image -->
+
+                        <div class="u-shadow-v1-5 g-line-height-2 g-pa-10 g-mb-10  g-bg-white g-rounded-5" role="alert">
+
+                            <div class="list-group">
+
+                                <!-- Profile -->
+                                <a href="profile" class="list-group-item list-group-item-action justify-content-between active">
+                                    <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Profil</span>
+                                </a>
+                                <!-- End Profile -->
+                                <!-- My Projects -->
+                                <a href="history" class="list-group-item list-group-item-action justify-content-between">
+                                    <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Dokumen Saya</span>
+                                </a>
+                                <!-- End My Projects -->
+                            </div>
+                            <!-- End Sidebar Navigation -->
+                        </div>
+                    </div>
+                    <!-- End Profile Sidebar -->
+                    <!-- Profle Content -->
+
+                    <div class="col-lg-9">
+                        <div class="u-shadow-v1-5 g-line-height-2 g-pa-20 g-mb-20 g-bg-white g-rounded-10 g-color-gray-dark-v5" role="alert">
+                            <div class="row">
+                                <div class="col-lg-4 g-mb-20 g-mb-3--lg">
+                                    <!-- User Image -->
+                                    @if (Model.Avatar != null)
+                                    {
+                                        <div class="g-mb-20">
+                                            <img class="img-fluid w-100" src="@Model.Avatar" alt="Image Description">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="g-mb-20">
+                                            <img class="img-fluid w-100" src="~/assets/images/logo/si-dital.png" alt="Image Description">
+                                        </div>
+                                    }
+                                </div>
+
+                                <div class="col-lg-8">
+                                    <!-- User Details -->
+                                    <div class="d-flex align-items-center justify-content-sm-between g-mb-5">
+                                        <h2 class="g-font-weight-300 g-mr-10 g-color-black">@Model.FullName</h2>
+
+                                    </div>
+                                    <!-- End User Details -->
+                                    <!-- User Position -->
+                                    <h4 class="h6 g-font-weight-300 g-mb-10">
+                                        <i class="icon-user g-pos-rel g-top-1 g-mr-5 g-color-gray-dark-v5 g-mr-5"></i> @Model.Job.Title di @Model.Institution
+                                    </h4>
+                                    <!-- End User Position -->
+                                    <!-- User Info -->
+                                    <ul class="list-inline g-font-weight-300">
+                                        <li class="list-inline-item g-mr-20">
+                                            <i class="icon-calendar g-pos-rel g-top-1 g-color-gray-dark-v5 g-mr-5"></i> @Model.DOB.ToString("dd-MM-yyyy")
+                                        </li>
+                                        <li class="list-inline-item g-mr-20">
+                                            <i class="icon-notebook g-pos-rel g-top-1 g-color-gray-dark-v5 g-mr-5"></i> @Model.Email
+                                        </li>
+                                        <li class="list-inline-item g-mr-20">
+                                            <i class="icon-phone g-pos-rel g-top-1 g-color-gray-dark-v5 g-mr-5"></i> @Model.PhoneNumber
+                                        </li>
+                                    </ul>
+                                    <ul class="list-inline g-font-weight-300">
+                                        @if (Model.RT != null && Model.RW != null)
+                                        {
+                                            <li class="list-inline-item g-mr-20">
+                                                <i class="icon-location-pin g-pos-rel g-top-1 g-color-gray-dark-v5 g-mr-5"></i> @Model.RT.Name / @Model.RW.Name
+                                            </li>
+                                        }
+                                        @if (Model.Address != null)
+                                        {
+                                            <li class="list-inline-item g-mr-20">
+                                                <i class="icon-location-pin g-pos-rel g-top-1 g-color-gray-dark-v5 g-mr-5"></i> @Model.Address
+                                            </li>
+                                        }
+                                    </ul>
+                                    <!-- End User Info -->
+                                    @if (Model.Descriptions != null)
+                                    {
+                                        <hr />
+                                        <h4 class="h6 g-font-weight-300 g-mb-10">
+                                            <i class="icon-badge g-pos-rel g-top-1 g-mr-5 g-color-gray-dark-v5 g-mr-5"></i> @Model.Descriptions
+                                        </h4>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="g-height-30">
+
+            </div>
+        </section>
+        <!-- End Copyright Footer -->
+        <a class="js-go-to u-go-to-v1" href="#" data-type="fixed" data-position='{
+     "bottom": 15,
+     "right": 15
+   }' data-offset-top="400" data-compensation="#js-header" data-show-effect="zoomIn">
+            <i class="hs-icon hs-icon-arrow-top"></i>
+        </a>
+    </main>
+
+    <div class="u-outer-spaces-helper"></div>
+
+</body>
+
+</html>
+
+

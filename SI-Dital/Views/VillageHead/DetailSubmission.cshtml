@@ -1,0 +1,132 @@
+﻿@model SI_Dital.Models.Document
+
+@{
+    ViewBag.Title = "DocumentSubmissionList";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var eventId = ViewBag.IdProgram;
+}
+
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Pengajuan Dokumen</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("DocumentSubmissionList")">Pengajuan Dokumen</a></li>
+            <li class="breadcrumb-item active">Detail Pengajuan</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Foto Profil</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if (Model.CreatedBy.Avatar != null)
+                        {
+                            <img class="img-fluid w-100 center" src="@Model.CreatedBy.Avatar" alt="Image Description">
+                        }
+                        else
+                        {
+                            <img class="img-fluid w-100" src="~/assets/images/logo/si-dital.png" alt="Image Description">
+                        }
+                    </div>
+                </div>
+                <div class="col-12">
+                    <form class="form" method="post" id="ApproveDocumentSubmission" action="@Url.Action("ApproveDocumentSubmission")">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.IdDocument)
+                        @if (Model.Status == SI_Dital.Models.Status.Pending)
+                        {
+                        <button type="submit" class="btn btn-md btn-success w-100" value="Setujui Reservasi">Setujui Dokumen</button>
+                        }
+                        else
+                        {
+                        <button type="button" class="btn btn-md btn-warning w-100" value="Setujui Reservasi">Telah Di Setujui</button>
+                        }
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Informasi Pengguna</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6 class="box-title">Nama Lengkap</h6>
+                        <p class="text-muted font-13">@Model.CreatedBy.FullName</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="box-title">Email</h6>
+                        <p class="text-muted font-13">
+                            @Model.CreatedBy.Email
+                            @if (Model.CreatedBy.EmailConfirmed)
+                            {
+                                <span>[ <font color="blue">Konfirmasi</font> ]</span>
+                            }
+                            else
+                            {
+                                <span>[ <font color="red">Belum Konfirmasi</font> ]</span>
+                            }
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h6 class="box-title">Jabatan</h6>
+                        <p class="text-muted font-13">@Model.CreatedBy.Address</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="box-title">Institusi</h6>
+                        <p class="text-muted font-13">@Model.CreatedBy.Institution</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Penjelasan Kebutuhan Dokumen</h4>
+                <hr />
+                <p>
+                    @Model.Descriptions
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+        $(document).ready(function () {
+            $("#ApproveDocumentSubmission").submit(function (e) {
+                e.preventDefault();
+                var data = $('#ApproveDocumentSubmission').serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ApproveDocumentSubmission", "Administrator")',
+                    data: data,
+                    success: function (data) {
+                        if (data == "OK") {
+                            swal({
+                                title: "Sukses",
+                                text: "Dokumen Berhasil Di Setujui",
+                                type: "success",
+                                button: true,
+                            })
+                        } else {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Dokumen Gagal Di Setujui",
+                                type: "error"
+                            })
+                        }
+                    }
+                });
+            });
+        });
+
+</script>

@@ -26,7 +26,7 @@
             <table id="myTable" class="table table-bordered table-striped">
                 <thead class="table-header">
                     <tr>
-                        <th>ID</th>
+                        <th>NIK</th>
                         <th>Nama</th>
                         <th>RT</th>
                         <th>RW</th>
@@ -37,10 +37,24 @@
                     @foreach (var item in Model)
                     {
                     <tr>
-                        <td>@item.Id</td>
+                        <td>@item.NIK</td>
                         <td>@item.FullName</td>
-                        <td>@item.RT</td>
-                        <td>@item.RW</td>
+                        @if (item.RT != null)
+                        {
+                            <td>@item.RT.Name</td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
+                        @if (item.RW != null)
+                        {
+                            <td>@item.RW.Name</td>
+                        }
+                        else
+                        {
+                            <td>-</td>
+                        }
                         <td>
                             <a href="@Url.Action("EditCitizen", new { id = @item.Id })" target="_blank" data-toggle="tooltip" data-original-title="Edit">
                                 <i class="fa fa-edit m-1"></i>

@@ -49,10 +49,10 @@ namespace SI_Dital.ViewModels
         public string Avatar { get; set; }
         [Display(Name = "Alamat Lengkap")]
         public string Address { get; set; }
-        public Models.RT RT { get; set; }
-        public Models.RW RW { get; set; }
+        public string RT { get; set; }
+        public string RW { get; set; }
         [Display(Name = "Pekerjaan")]
-        public Models.Job Job { get; set; }
+        public int Job { get; set; }
         [Display(Name = "Deskripsi")]
         public string Descriptions { get; set; }
         [Required(ErrorMessage = "Wajib diisi")]
@@ -66,7 +66,7 @@ namespace SI_Dital.ViewModels
         [Display(Name = "Agama")]
         public Religion Religion { set; get; }
         [Display(Name = "Jabatan Di Desa")]
-        public Roles Roles { set; get; }
+        public Departement Roles { set; get; }
     }
     public class EditCitizen
     {
@@ -81,9 +81,9 @@ namespace SI_Dital.ViewModels
         public string City { get; set; }
         public string Avatar { get; set; }
         public string Address { get; set; }
-        public Models.RT RT { get; set; }
-        public Models.RW RW { get; set; }
-        public Models.Job Job { get; set; }
+        public string RT { get; set; }
+        public string RW { get; set; }
+        public Job Job { get; set; }
         public string Descriptions { get; set; }
         public RegistrationStatus RegistrationStatus { get; set; }
         public bool Gender { get; set; }

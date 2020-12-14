@@ -12,8 +12,6 @@ namespace SI_Dital.Models
         public string IdDocument { set; get; }
         public string Descriptions { get; set; }
         public DocumentGroup DocumentGroup { get; set; }
-        public Status Status { set; get; }
-        public virtual ApplicationUser ApprovedBy { get; set; }
         public DateTimeOffset ApprovedAt { get; set; }
 
     }
@@ -22,6 +20,7 @@ namespace SI_Dital.Models
         [Key]
         public string Permalink { get; set; }
         public string Title { get; set; }
+        public FileDocuments FileDocuments { get; set; }
         public int Order { get; set; }
     }
     public enum Status {

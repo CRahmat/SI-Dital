@@ -41,19 +41,19 @@
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-12">
                                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label g-color-gray-dark-v5" })
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Lengkap" } })
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row" style="margin-bottom: 10px;">
                             <div class="col-md-6">
                                 @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label g-color-gray-dark-v5" })
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "NIK" } })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                             </div>
                             <div class="col-md-6">
                                 @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label g-color-gray-dark-v5" })
-                                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Lengkap" } })
+                                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirm Password" } })
                                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -143,16 +143,8 @@
                                 @Html.ValidationMessageFor(model => model.MaritalStatus, "", new { @class = "text-danger" })
                             </div>
                             <div class="col-md-6">
-                                @Html.LabelFor(model => model.Religion, htmlAttributes: new { @class = "control-label g-color-gray-dark-v5" })
-                                <select class="form-control" name="Religion" id="Religion" required>
-                                    <option hidden value="">Agama</option>
-                                    <option value="0">Islam</option>
-                                    <option value="1">Kristen</option>
-                                    <option value="2">Katolik</option>
-                                    <option value="3">Hindu</option>
-                                    <option value="4">Budha</option>
-                                    <option value="5">Kong Hu Chu</option>
-                                </select>
+                                @Html.LabelFor(model => model.Religion, htmlAttributes: new { @class = "control-label" })
+                                @Html.EnumDropDownListFor(model => model.Religion, "Select Status", new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Religion, "", new { @class = "text-danger" })
                             </div>
                         </div>

@@ -11,7 +11,7 @@ namespace SI_Dital.Models
         [Key]
         public string IdFileDocument { get; set; }
         public string Name { get; set; }
-        public string FileUrl { get; set; }
+        public byte[] File { get; set; }
         public double LogoXPosition { get; set; }
         public double LogoYPosition { get; set; }
         public double NameXPosition { get; set; }

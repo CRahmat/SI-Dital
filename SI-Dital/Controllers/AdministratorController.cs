@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity.Validation;
 
 namespace SI_Dital.Controllers
 {
@@ -713,7 +714,7 @@ namespace SI_Dital.Controllers
 
         public async Task<ActionResult> Citizen()
         {
-            var Citizen = await db.Citizens.Where(x => x.IsBanned == false).ToListAsync();
+            var Citizen = await db.Citizens.Include("RT").Include("RW").Where(x => x.IsBanned == false).ToListAsync();
             if (Citizen != null)
             {
                 return View(Citizen);
@@ -764,48 +765,55 @@ namespace SI_Dital.Controllers
                     .SingleOrDefaultAsync();
                 if (currentUser != null)
                 {
-                    var addCitizen = new Models.Citizens
+                try
+                {
+                    var searchUser = await db.Users.Where(x => x.Email == newCitizen.Email).SingleOrDefaultAsync();
+                    if (searchUser == null)
                     {
-                        NIK = newCitizen.NIK,
-                        Email = newCitizen.Email,
-                        FullName = newCitizen.FullName,
-                        RegistrationStatus = newCitizen.RegistrationStatus,
-                        IsBanned = true,
-                        Avatar = newCitizen.Avatar,
-                        Address = newCitizen.Address,
-                        RT = newCitizen.RT,
-                        RW = newCitizen.RW,
-                        DOB = newCitizen.DOB,
-                        Institution = newCitizen.Institution,
-                        PhoneNumber = newCitizen.PhoneNumber,
-                        MaritalStatus = newCitizen.MaritalStatus,
-                        Religion = newCitizen.Religion,
-                        Citizenship = newCitizen.Citizenship,
-                        Descriptions = newCitizen.Descriptions,
-                        Job = newCitizen.Job,
-                        Gender = newCitizen.Gender,
-                        Password = newCitizen.Password,
-                        Roles = newCitizen.Roles,
-                        RegisteredBy = currentUser,
-                        Registered = DateTime.UtcNow
-                    };
-                    try
-                    {
-                        var user = new ApplicationUser { UserName = newCitizen.NIK, Email = newCitizen.Email };
-                        var resultUserManager = await UserManager.CreateAsync(user, newCitizen.Password);
-                        var currentHost = await UserManager.FindByEmailAsync(newCitizen.Email);
-                        var addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "Citizen");
-                        if (newCitizen.Roles == Roles.Admin)
+                        var citizen = new Citizens {
+                            Id = Guid.NewGuid().ToString(),
+                            UserName = newCitizen.NIK, 
+                            Email = newCitizen.Email,
+                            FullName = newCitizen.FullName,
+                            PhoneNumber = newCitizen.PhoneNumber
+                        };
+                        var resultUserManager = await UserManager.CreateAsync(citizen, newCitizen.Password);
+                        var currentCitizen = await UserManager.FindByEmailAsync(newCitizen.Email);
+                        var addToRoleResult = await UserManager.AddToRoleAsync(currentCitizen.Id, "Citizen");
+                        if (newCitizen.Roles == Departement.Admin)
                         {
-                            addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "Administrator");
+                            addToRoleResult = await UserManager.AddToRoleAsync(currentCitizen.Id, "Administrator");
                         }
-                        else if (newCitizen.Roles == Roles.VillageHead)
+                        else if (newCitizen.Roles == Departement.VillageHead)
                         {
-                            addToRoleResult = await UserManager.AddToRoleAsync(currentHost.Id, "VillageHead");
+                            addToRoleResult = await UserManager.AddToRoleAsync(currentCitizen.Id, "VillageHead");
                         }
                         if (resultUserManager.Succeeded && addToRoleResult.Succeeded)
                         {
-                            db.Citizens.Add(addCitizen);
+                            var RT = await db.RT.FindAsync(newCitizen.RT);
+                            var RW = await db.RW.FindAsync(newCitizen.RW);
+                            var job = await db.Jobs.FindAsync(newCitizen.Job);
+                            var addCitizen = await db.Citizens.FindAsync(currentCitizen.Id);
+                            if (addCitizen != null) {
+                                addCitizen.NIK = newCitizen.NIK;
+                                addCitizen.Job = job;
+                                addCitizen.DOB = newCitizen.DOB;
+                                addCitizen.Religion = newCitizen.Religion;
+                                addCitizen.RegisteredBy = currentUser;
+                                addCitizen.Departement = newCitizen.Roles;
+                                addCitizen.RegistrationStatus = newCitizen.RegistrationStatus;
+                                addCitizen.RT = RT;
+                                addCitizen.RW = RW;
+                                addCitizen.MaritalStatus = newCitizen.MaritalStatus;
+                                addCitizen.Citizenship = newCitizen.Citizenship;
+                                addCitizen.Gender = newCitizen.Gender;
+                                addCitizen.Institution = newCitizen.Institution;
+                                addCitizen.IsBanned = false;
+                                addCitizen.Address = newCitizen.Address;
+                                addCitizen.EmailConfirmed = false;
+                                addCitizen.Descriptions = newCitizen.Descriptions;
+                            }
+                            db.Entry(addCitizen).State = EntityState.Modified;
                             var result = await db.SaveChangesAsync();
                             if (result > 0)
                             {
@@ -814,12 +822,23 @@ namespace SI_Dital.Controllers
                             }
                         }
                     }
-                    catch (Exception ex)
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
                     {
-                        Trace.TraceError(ex.Message);
-                        Trace.TraceError(ex.StackTrace);
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    Trace.TraceError(ex.Message);
+                    Trace.TraceError(ex.StackTrace);
+                }
+            }
             return View("Error");
         }
         public async Task<ActionResult> EditCitizen(string id)
@@ -840,6 +859,9 @@ namespace SI_Dital.Controllers
                     .SingleOrDefaultAsync();
                 if (currentUser != null)
                 {
+                    var RT = await db.RT.FindAsync(updateCitizen.RT);
+                    var RW = await db.RW.FindAsync(updateCitizen.RW);
+                    var job = await db.Jobs.FindAsync(updateCitizen.Job);
                     var editCitizen = new Models.Citizens
                     {
                         NIK = updateCitizen.NIK,
@@ -848,8 +870,8 @@ namespace SI_Dital.Controllers
                         IsBanned = true,
                         Avatar = updateCitizen.Avatar,
                         Address = updateCitizen.Address,
-                        RT = updateCitizen.RT,
-                        RW = updateCitizen.RW,
+                        RT = RT,
+                        RW = RW,
                         DOB = updateCitizen.DOB,
                         Institution = updateCitizen.Institution,
                         PhoneNumber = updateCitizen.PhoneNumber,
@@ -857,12 +879,11 @@ namespace SI_Dital.Controllers
                         Religion = updateCitizen.Religion,
                         Citizenship = updateCitizen.Citizenship,
                         Descriptions = updateCitizen.Descriptions,
-                        Job = updateCitizen.Job,
+                        Job = job,
                         Gender = updateCitizen.Gender,
-                        Password = updateCitizen.Password,
-                        Roles = updateCitizen.Roles,
-                        EditedBy = currentUser,
-                        Edited = DateTime.UtcNow
+                        Departement = updateCitizen.Roles,
+                        UpdatedBy = currentUser,
+                        Updated = DateTime.UtcNow
                     };
                     try
                     {
@@ -924,27 +945,34 @@ namespace SI_Dital.Controllers
             return View();
             
         }
-        public async Task<ActionResult> ApproveDocumentSubmissionList()
+        public async Task<ActionResult> DetailSubmission(string id)
         {
-            var documents = await db.Documents.Include("DocumentGroup").Where(x => x.Status == Models.Status.Pending).ToListAsync();
+            var documents = await db.Documents.Where(x => x.IdDocument == id).SingleOrDefaultAsync();
+            if (documents != null)
+            {
+                return View(documents);
+            }
+            return View();
+
+        }
+        [HttpPost]
+        public async Task<ActionResult> ApproveDocumentSubmission(string IdDocument)
+        {
+            var documents = await db.Documents.Include("DocumentGroup").Where(x => x.IdDocument == IdDocument && x.Status == Models.Status.Pending).SingleOrDefaultAsync();
             var currentUser = await db.Users.Where(x => x.UserName == User.Identity.Name)
                 .SingleOrDefaultAsync();
-            if (currentUser != null)
+            if (currentUser != null && documents != null)
             {
-                var document = new Models.Document
-                {
-                    ApprovedAt = DateTimeOffset.UtcNow,
-                    ApprovedBy = currentUser,
-                    Status = Models.Status.Approved
-                  
-                };
+                documents.Approved = DateTime.UtcNow;
+                documents.ApprovedBy = currentUser;
+                documents.Status = Status.Approved;
                 try
                 {
-                    db.Entry(document).State = EntityState.Modified;
+                    db.Entry(documents).State = EntityState.Modified;
                     var result = await db.SaveChangesAsync();
                     if (result > 0)
                     {
-                        return RedirectToAction("Citizen");
+                        return RedirectToAction("DocumentSubmissionList");
                     }
                 }
                 catch (Exception ex)
@@ -953,7 +981,7 @@ namespace SI_Dital.Controllers
                     Trace.TraceError(ex.StackTrace);
                 }
             }
-            return View();
+            return View("Error");
 
         }
         public async Task<ActionResult> DocumentSubmissionHistory()
@@ -964,6 +992,16 @@ namespace SI_Dital.Controllers
                 return View(documents);
             }
             return View();
+        }
+        public async Task<ActionResult> DetailSubmissionHistory(string id)
+        {
+            var documents = await db.Documents.Where(x => x.IdDocument == id).SingleOrDefaultAsync();
+            if (documents != null)
+            {
+                return View(documents);
+            }
+            return View();
+
         }
         public async Task<ActionResult> Report()
         {
@@ -984,12 +1022,14 @@ namespace SI_Dital.Controllers
                     var currentUser = await db.Users.Where(x => x.UserName == User.Identity.Name)
                         .SingleOrDefaultAsync();
                     var currentTime = DateTimeOffset.UtcNow;
+                    byte[] uploadedFile = new byte[model.File.InputStream.Length];
+                    model.File.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
 
                     var document = new FileDocuments()
                     {
                         IdFileDocument = Guid.NewGuid().ToString(),
                         Name = model.Name,
-                        FileUrl = await Helpers.UploadFileHelper.UploadDocumentsAsync(model.File, currentUser.Id),
+                        File = uploadedFile,
                         NameXPosition = model.NameXPosition,
                         NameYPosition = model.NameYPosition,
                         QRXPosition = model.QRXPosition,

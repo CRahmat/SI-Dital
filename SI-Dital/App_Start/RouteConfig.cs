@@ -18,6 +18,9 @@ namespace SI_Dital
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute("RegisterVillageHead",
+            "register/villagehead",
+            new { controller = "Account", action = "Register", id = UrlParameter.Optional });
         }
     }
 }

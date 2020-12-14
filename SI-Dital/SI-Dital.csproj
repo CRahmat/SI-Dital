@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
     </Reference>
@@ -58,12 +64,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -176,6 +191,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -183,21 +199,27 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\VillageHeadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\UploadFileHelper.cs" />
-    <Compile Include="Migrations\202012080940150_SI-Dital-1.cs" />
-    <Compile Include="Migrations\202012080940150_SI-Dital-1.Designer.cs">
-      <DependentUpon>202012080940150_SI-Dital-1.cs</DependentUpon>
+    <Compile Include="Infrastructures\ApplicationDbContext.cs" />
+    <Compile Include="Migrations\202012130525339_SI-Dital-1.cs" />
+    <Compile Include="Migrations\202012130525339_SI-Dital-1.Designer.cs">
+      <DependentUpon>202012130525339_SI-Dital-1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012081050386_SI-Dital-2.cs" />
-    <Compile Include="Migrations\202012081050386_SI-Dital-2.Designer.cs">
-      <DependentUpon>202012081050386_SI-Dital-2.cs</DependentUpon>
+    <Compile Include="Migrations\202012140226026_SI-Dital-2.cs" />
+    <Compile Include="Migrations\202012140226026_SI-Dital-2.Designer.cs">
+      <DependentUpon>202012140226026_SI-Dital-2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202012081348215_SI-Dital-3.cs" />
-    <Compile Include="Migrations\202012081348215_SI-Dital-3.Designer.cs">
-      <DependentUpon>202012081348215_SI-Dital-3.cs</DependentUpon>
+    <Compile Include="Migrations\202012140255040_SI-Dital-3.cs" />
+    <Compile Include="Migrations\202012140255040_SI-Dital-3.Designer.cs">
+      <DependentUpon>202012140255040_SI-Dital-3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012140300491_SI-Dital-4.cs" />
+    <Compile Include="Migrations\202012140300491_SI-Dital-4.Designer.cs">
+      <DependentUpon>202012140300491_SI-Dital-4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -216,6 +238,7 @@
     <Compile Include="ViewModels\FileDocuments.cs" />
     <Compile Include="ViewModels\Hamlet.cs" />
     <Compile Include="ViewModels\Jobs.cs" />
+    <Compile Include="ViewModels\MyDocuments.cs" />
     <Compile Include="ViewModels\RT.cs" />
     <Compile Include="ViewModels\RW.cs" />
   </ItemGroup>
@@ -599,6 +622,13 @@
     <Content Include="assets\images\logo\si-dital-logo.png" />
     <Content Include="assets\images\logo\si-dital-text.png" />
     <Content Include="assets\images\logo\si-dital.png" />
+    <Content Include="assets\images\perdagangan.jpg" />
+    <Content Include="assets\images\perkebunan-1.jpg" />
+    <Content Include="assets\images\perkebunan-2.jpg" />
+    <Content Include="assets\images\pertanian-1.jpg" />
+    <Content Include="assets\images\pertanian-2.jpg" />
+    <Content Include="assets\images\pertanian-3.jpg" />
+    <Content Include="assets\images\pertanian-4.jpg" />
     <Content Include="assets\images\tutorial\avatar.jpg" />
     <Content Include="assets\images\tutorial\bagi hasil.jpg" />
     <Content Include="assets\images\tutorial\banner.jpg" />
@@ -625,6 +655,8 @@
     <Content Include="assets\images\tutorial\undang peserta.jpg" />
     <Content Include="assets\images\tutorial\voucher acara.jpg" />
     <Content Include="assets\images\tutorial\voucher semua.jpg" />
+    <Content Include="assets\images\umkm-1.jpeg" />
+    <Content Include="assets\images\umkm-2.jpg" />
     <Content Include="assets\images\user-default-small.png" />
     <Content Include="assets\images\user-default.png" />
     <Content Include="assets\images\vector\faq.png" />
@@ -8615,6 +8647,88 @@
     <Content Include="assets\vendor\themify-icons\SVG\zoom-in.svg" />
     <Content Include="assets\vendor\themify-icons\SVG\zoom-out.svg" />
     <Content Include="assets\vendor\themify-icons\themify-icons.css" />
+    <Content Include="assets\vendor\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="assets\vendor\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="assets\vendor\tinymce\jquery.tinymce.min.js" />
+    <Content Include="assets\vendor\tinymce\license.txt" />
+    <Content Include="assets\vendor\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="assets\vendor\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="assets\vendor\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\example\dialog.html" />
+    <Content Include="assets\vendor\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="assets\vendor\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="assets\vendor\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="assets\vendor\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="assets\vendor\tinymce\themes\modern\theme.min.js" />
+    <Content Include="assets\vendor\tinymce\tinymce.min.js" />
     <Content Include="assets\vendor\toast-master\css\jquery.toast.css" />
     <Content Include="assets\vendor\toast-master\js\jquery.toast.js" />
     <Content Include="assets\vendor\tooltip.js\index.js" />
@@ -9467,6 +9581,13 @@
     <Content Include="assets\vendor\datatables-responsive\make.sh" />
     <Content Include="assets\vendor\datatables-responsive\Readme.md" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="assets\vendor\tinymce\langs\readme.md" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -9500,7 +9621,7 @@
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\GetResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
@@ -9548,6 +9669,50 @@
     <Content Include="Views\Administrator\EditJob.cshtml" />
     <Content Include="Views\Administrator\Citizen.cshtml" />
     <Content Include="Views\Administrator\AddCitizen.cshtml" />
+    <Content Include="Views\Account\ConfirmAccount.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHead.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadFooter.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadHeader.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadHeaderProfileMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadSidebar.cshtml" />
+    <Content Include="Views\Shared\_LayoutVillageHeadSidebarProfileMenu.cshtml" />
+    <Content Include="Views\VillageHead\AddCitizen.cshtml" />
+    <Content Include="Views\VillageHead\AddDocumentType.cshtml" />
+    <Content Include="Views\VillageHead\AddHamlet.cshtml" />
+    <Content Include="Views\VillageHead\AddJob.cshtml" />
+    <Content Include="Views\VillageHead\AddRT.cshtml" />
+    <Content Include="Views\VillageHead\AddRW.cshtml" />
+    <Content Include="Views\VillageHead\Citizen.cshtml" />
+    <Content Include="Views\VillageHead\Dashboard.cshtml" />
+    <Content Include="Views\VillageHead\DetailDocumentType.cshtml" />
+    <Content Include="Views\VillageHead\DetailHamlet.cshtml" />
+    <Content Include="Views\VillageHead\DetailJob.cshtml" />
+    <Content Include="Views\VillageHead\DetailRT.cshtml" />
+    <Content Include="Views\VillageHead\DetailRW.cshtml" />
+    <Content Include="Views\VillageHead\DocumentSubmissionHistory.cshtml" />
+    <Content Include="Views\VillageHead\DocumentSubmissionList.cshtml" />
+    <Content Include="Views\VillageHead\DocumentType.cshtml" />
+    <Content Include="Views\VillageHead\EditDocumentType.cshtml" />
+    <Content Include="Views\VillageHead\EditHamlet.cshtml" />
+    <Content Include="Views\VillageHead\EditJob.cshtml" />
+    <Content Include="Views\VillageHead\EditRT.cshtml" />
+    <Content Include="Views\VillageHead\EditRW.cshtml" />
+    <Content Include="Views\VillageHead\Hamlet.cshtml" />
+    <Content Include="Views\VillageHead\Index.cshtml" />
+    <Content Include="Views\VillageHead\Job.cshtml" />
+    <Content Include="Views\VillageHead\Report.cshtml" />
+    <Content Include="Views\VillageHead\RT.cshtml" />
+    <Content Include="Views\VillageHead\RW.cshtml" />
+    <Content Include="Views\Administrator\DetailSubmission.cshtml" />
+    <Content Include="Views\Administrator\DetailSubmissionHistory.cshtml" />
+    <Content Include="Views\VillageHead\DetailSubmissionHistory.cshtml" />
+    <Content Include="Views\VillageHead\DetailSubmission.cshtml" />
+    <Content Include="Views\VillageHead\AddFileDocument.cshtml" />
+    <Content Include="Views\VillageHead\FileDocument.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\History.cshtml" />
+    <Content Include="Views\Home\_MyDocumentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -9567,14 +9732,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202012080940150_SI-Dital-1.resx">
-      <DependentUpon>202012080940150_SI-Dital-1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012130525339_SI-Dital-1.resx">
+      <DependentUpon>202012130525339_SI-Dital-1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012081050386_SI-Dital-2.resx">
-      <DependentUpon>202012081050386_SI-Dital-2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012140226026_SI-Dital-2.resx">
+      <DependentUpon>202012140226026_SI-Dital-2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202012081348215_SI-Dital-3.resx">
-      <DependentUpon>202012081348215_SI-Dital-3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012140255040_SI-Dital-3.resx">
+      <DependentUpon>202012140255040_SI-Dital-3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012140300491_SI-Dital-4.resx">
+      <DependentUpon>202012140300491_SI-Dital-4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

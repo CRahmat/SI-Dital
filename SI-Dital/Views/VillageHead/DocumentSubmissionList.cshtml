@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SI_Dital.Models.Document>
+
+@{
+    ViewBag.Title = "DocumentSubmissionList";
+    Layout = "~/Views/Shared/_LayoutVillageHead.cshtml";
+    var eventId = ViewBag.IdProgram;
+}
+
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Daftar Pengajuan Dokumen</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("DocumentSubmissionList")">Pengajuan Dokumen</a></li>
+            <li class="breadcrumb-item active">Daftar Pengajuan Dokumen</li>
+        </ol>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive m-t-40">
+            <table id="myTable" class="table table-bordered table-striped">
+                <thead class="table-header">
+                    <tr>
+                        <th>Nama</th>
+                        <th>Email</th>
+                        <th>No. Telepon</th>
+                        <th>Status Dokumen</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CreatedBy.FullName</td>
+                                <td>@item.CreatedBy.Email</td>
+                                <td>@item.DocumentGroup.Title</td>
+                                @if (item.Status == SI_Dital.Models.Status.Approved)
+                                {
+                                    <td><span class="label label-success">Di Terima</span></td>
+                                }
+                                else if (item.Status == SI_Dital.Models.Status.OnCheck)
+                                {
+                                    <td><span class="label label-primary">Sedang Di Cek</span></td>
+                                }
+                                else if (item.Status == SI_Dital.Models.Status.Pending)
+                                {
+                                    <td><span class="label label-inverse">Pending</span></td>
+                                }
+                                else if (item.Status == SI_Dital.Models.Status.Rejected)
+                                {
+                                    <td><span class="label label-danger">Di Tolak</span></td>
+                                }
+                                <td>
+                                    <a href="@Url.Action("DetailSubmission", new { id = @item.IdDocument })" target="_blank" data-toggle="tooltip" data-original-title="Lihat Detail">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section styles
+{
+    <link href="~/assets/vendor/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+}
+
+@section Scripts{
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+
+    </script>
+}
+
+

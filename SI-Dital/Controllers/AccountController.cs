@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SI_Dital.Infrastructures;
 using SI_Dital.Models;
 
 namespace SI_Dital.Controllers
@@ -17,7 +19,7 @@ namespace SI_Dital.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        protected ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -85,15 +87,36 @@ namespace SI_Dital.Controllers
                     case SignInStatus.Success:
                         if (SignInManager.UserManager.IsInRole(user.Id, "VillageHead"))
                         {
-                            return RedirectToAction("Dashboard", "VillageHead");
+                            if(user.EmailConfirmed == false)
+                            {
+                                return RedirectToAction("ConfirmEmail", "Account", new { email = model.Email });
+                            }
+                            else
+                            {
+                                return RedirectToAction("Dashboard", "VillageHead");
+                            }
                         }
                         if (SignInManager.UserManager.IsInRole(user.Id, "Administrator"))
                         {
-                            return RedirectToAction("Dashboard", "Administrator");
+                            if (user.EmailConfirmed == false)
+                            {
+                                return RedirectToAction("GetResetPassword", "Account", new { email = model.Email });
+                            }
+                            else
+                            {
+                                return RedirectToAction("Dashboard", "Administrator");
+                            }
                         }
                         else
                         {
-                            return Redirect("/");
+                            if (user.EmailConfirmed == false)
+                            {
+                                return RedirectToAction("GetResetPassword", "Account", new { email = model.Email });
+                            }
+                            else
+                            {
+                                return Redirect("/");
+                            }
                         }
                     case SignInStatus.LockedOut:
                         return View("Lockout");
@@ -169,19 +192,21 @@ namespace SI_Dital.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new Citizens { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var currentCitizen = await UserManager.FindByEmailAsync(model.Email);
+                var addToRoleResult = await UserManager.AddToRoleAsync(currentCitizen.Id, "VillageHead");
+                if (result.Succeeded && addToRoleResult.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    return RedirectToAction("Index", "Home");
+                    //For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    //Send an email with this link
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("ConfirmEmail", "Account", new { email = model.Email });
                 }
                 AddErrors(result);
             }
@@ -189,18 +214,107 @@ namespace SI_Dital.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
-        // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public async Task<ActionResult> ConfirmAccount(string email)
         {
-            if (userId == null || code == null)
+            if (email == null)
             {
                 return View("Error");
             }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+            else
+            {
+                var currentCitizen = await db.Citizens.Where(x => x.Email == email).SingleOrDefaultAsync();
+                if(currentCitizen != null)
+                {
+                    var job = await db.Jobs.Where(x => x.IsDeleted == false)
+                        .Select(i => new SelectListItem()
+                        {
+                            Text = i.Title,
+                            Value = i.IdJob.ToString(),
+                            Selected = false
+                        }).ToArrayAsync();
+                    ViewBag.Jobs = job;
+                    var rt = await db.RT.Where(x => x.IsDeleted == false)
+                        .Select(i => new SelectListItem()
+                        {
+                            Text = i.Name,
+                            Value = i.IdRT.ToString(),
+                            Selected = false
+                        }).ToArrayAsync();
+                    ViewBag.RT = rt;
+                    var rw = await db.RW.Where(x => x.IsDeleted == false)
+                        .Select(i => new SelectListItem()
+                        {
+                            Text = i.Name,
+                            Value = i.IdRW.ToString(),
+                            Selected = false
+                        }).ToArrayAsync();
+                    ViewBag.RW = rw;
+                    return View(currentCitizen);
+                }
+            }
+            return View("Error");
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Confirm(ViewModels.AddCitizen newCitizen)
+        {
+            if (newCitizen!= null)
+            {
+                var RT = await db.RT.FindAsync(newCitizen.RT);
+                var RW = await db.RW.FindAsync(newCitizen.RW);
+                var job = await db.Jobs.FindAsync(newCitizen.Job);
+                var currentCitizen = await UserManager.FindByEmailAsync(newCitizen.Email);
+                var addCitizen = await db.Citizens.FindAsync(currentCitizen.Id);
+                if (addCitizen != null)
+                {
+                    addCitizen.NIK = newCitizen.NIK;
+                    addCitizen.Job = job;
+                    addCitizen.DOB = newCitizen.DOB;
+                    addCitizen.Religion = newCitizen.Religion;
+                    addCitizen.Departement = newCitizen.Roles;
+                    addCitizen.RegistrationStatus = newCitizen.RegistrationStatus;
+                    addCitizen.RT = RT;
+                    addCitizen.RW = RW;
+                    addCitizen.MaritalStatus = newCitizen.MaritalStatus;
+                    addCitizen.Citizenship = newCitizen.Citizenship;
+                    addCitizen.Gender = newCitizen.Gender;
+                    addCitizen.Institution = newCitizen.Institution;
+                    addCitizen.IsBanned = false;
+                    addCitizen.Address = newCitizen.Address;
+                    addCitizen.EmailConfirmed = true;
+                    addCitizen.Descriptions = newCitizen.Descriptions;
+                    addCitizen.FullName = newCitizen.FullName;
+                    addCitizen.PhoneNumber = newCitizen.PhoneNumber;
+                }
+                db.Entry(addCitizen).State = EntityState.Modified;
+                var result = await db.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return RedirectToAction("Login", "Account");
+
+                }
+            }
+            return View("Error");
+        }
+        //
+        // GET: /Account/ConfirmEmail
+        [AllowAnonymous]
+        public async Task<ActionResult> ConfirmEmail(string email)
+        {
+            if (email == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                ViewBag.Email = email;
+                return View();
+            }
+            return View("Error");
+            //var result = await UserManager.ConfirmEmailAsync(userId, code);
+            //return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
         //
@@ -250,9 +364,17 @@ namespace SI_Dital.Controllers
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public async Task<ActionResult> GetResetPassword(string email)
         {
-            return code == null ? View("Error") : View();
+            var user = await UserManager.FindByEmailAsync(email);
+            string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+            var citizen = new ResetPasswordViewModel
+            {
+                Email = email,
+                Code = code
+                
+            };
+            return View(citizen);
         }
 
         //
@@ -266,18 +388,23 @@ namespace SI_Dital.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
-            if (user == null)
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user != null)
             {
-                // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+                if (result.Succeeded)
+                {
+                    var addCitizen = await db.Citizens.Where(x => x.Email == model.Email).SingleOrDefaultAsync();
+                    addCitizen.EmailConfirmed = true;
+                    db.Entry(addCitizen).State = EntityState.Modified;
+                    var results = await db.SaveChangesAsync();
+                    if (results > 0)
+                    {
+                        return RedirectToAction("Login", "Account");
+                    }
+                }
+                AddErrors(result);
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
-            AddErrors(result);
             return View();
         }
 

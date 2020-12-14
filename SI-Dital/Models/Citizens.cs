@@ -10,27 +10,23 @@ namespace SI_Dital.Models
     [Table("Citizens")]
     public class Citizens : ApplicationUser
     {
-        public string NIK { set; get; }
-        public string Password { get; set; }
-        public Job Job {set; get;}
+        public Departement Departement { set; get; }
         public bool Gender { set; get; }
         public bool Status { set; get; }
         public bool MaritalStatus { set; get; }
         public string Citizenship { set; get; }
-        public Religion Religion { set; get; }
         public DateTimeOffset DOB { get; set; }
         public RT RT { set; get; }
         public RW RW { set; get; }
-        public string Institution { get; set; }
-        public string Avatar { get; set; }
-        public string Address { get; set; }
+        public string NIK { set; get; }
+        public Job Job { set; get; }
+        public Religion Religion { set; get; }
         public virtual ICollection<Document> Documents { get; set; }
-        public Roles Roles { set; get; }
         public virtual ApplicationUser RegisteredBy { set; get; }
+        public virtual ApplicationUser UpdatedBy { set; get; }
         public DateTimeOffset Registered { get; set; }
-        public virtual ApplicationUser EditedBy { set; get; }
-        public DateTimeOffset Edited { get; set; }
-
+        public DateTimeOffset Updated { get; set; }
+        public RegistrationStatus RegistrationStatus { get; set; }
     }
     public class Metadata
     {
@@ -67,7 +63,6 @@ namespace SI_Dital.Models
         [Key]
         public int IdJob { get; set; }
         public string Title { get; set; }
-        public Status Status { get; set; }
     }
     public enum RegistrationStatus
     {
@@ -75,7 +70,7 @@ namespace SI_Dital.Models
         Approved,
         Pending
     }
-    public enum Roles
+    public enum Departement
     {
         VillageHead,
         Admin,

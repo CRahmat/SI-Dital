@@ -37,19 +37,6 @@ namespace SI_Dital.ViewModels
         {
 
         }
-
-        public FileDocuments(Models.FileDocuments model)
-        {
-            IdFileDocument = model.IdFileDocument;
-            Name = model.Name;
-            NameXPosition = model.NameXPosition;
-            NameYPosition = model.NameYPosition;
-            QRXPosition = model.QRXPosition;
-            QRYPosition = model.QRYPosition;
-            FontSize = model.FontSize;
-            Url = model.FileUrl;
-            Status = model.Status;
-        }
     }
 
     public class EditFileDocuments

@@ -26,7 +26,6 @@
             <table id="myTable" class="table table-bordered table-striped">
                 <thead class="table-header">
                     <tr>
-                        <th>ID</th>
                         <th>Nama</th>
                         <th>Aksi</th>
                     </tr>
@@ -35,7 +34,6 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.IdJob</td>
                             <td>@item.Title</td>
                             <td>
                                 <a href="@Url.Action("EditJob", new { id = @item.IdJob })" target="_blank" data-toggle="tooltip" data-original-title="Edit">

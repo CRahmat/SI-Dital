@@ -113,6 +113,13 @@ C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.WindowsAzure.
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\Microsoft.WindowsAzure.Storage.xml
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SIDital1.resources
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csproj.GenerateResource.cache
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Net.Http.Formatting.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Web.Http.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Web.Http.WebHost.dll
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Net.Http.Formatting.xml
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Web.Http.xml
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\bin\System.Web.Http.WebHost.xml
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SIDital2.resources
-C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csprojAssemblyReference.cache
 C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SIDital3.resources
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI_Dital.Migrations.SIDital4.resources
+C:\Users\Catur Rahmat\source\repos\SI-Dital\SI-Dital\obj\Debug\SI-Dital.csprojAssemblyReference.cache
